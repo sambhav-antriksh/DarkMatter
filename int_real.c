@@ -35,6 +35,7 @@ int main()
 
 double lam3=1E-11;
 double coupling=1E-5;
+double Yndx1=9E-5;
 assignVal("MXi",450);
 assignVal("MnH1",460);
 assignVal("MnH2",460);
@@ -46,9 +47,7 @@ assignVal("wC23x3",18);
 assignVal("wC11x1",0);
 assignVal("wC12x2",0);
 assignVal("wC13x3",0);
-assignVal("Ynd1x1",0.00009);
-assignVal("Ynd2x2",0.00009);
-assignVal("Ynd3x3",0.00009);
+
 #ifdef OMEGA
 { int fast=1;
   double Beps=1.E-4, cut=0.01, vsPb;
@@ -59,6 +58,9 @@ defThermalSet(1,"~Xi");
 sortOddParticles(NULL);
 for (int j=0; j<5;j++)
 {
+assignVal("Ynd1x1",Yndx1*10);
+assignVal("Ynd2x2",Yndx1*10);
+assignVal("Ynd3x3",Yndx1*10);
 Omega=darkOmegaN(fast,Beps,&err);
 printf("Omega = %.16f\n",Omega);
 printf("Tstart %.3f Tend %.3f\n",Tstart,Tend);
